@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmp13e1xswsm0"]
+[gd_scene format=3 uid="uid://dmp13e1xswsm0"]
 
 [ext_resource type="Script" uid="uid://chrcwbh6kvb7i" path="res://main/main.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://cs1k22tdf04k4" path="res://player/player.tscn" id="2_pjrb6"]
 
-[node name="main" type="Node"]
+[node name="main" type="Node" unique_id=1892083961]
 script = ExtResource("1")
+
+[node name="DevGym" type="Node3D" parent="." unique_id=1308440776]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="DevGym" unique_id=2043998244]
+use_collision = true
+size = Vector3(50, 1, 50)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="DevGym" unique_id=1750310840]
+shadow_enabled = true
+
+[node name="Player" parent="DevGym" unique_id=943035942 instance=ExtResource("2_pjrb6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59265196, 0)

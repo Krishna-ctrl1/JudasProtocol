@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://djtx3c3mlg0p8"]
+
+[ext_resource type="Script" uid="uid://dh0lefs7yrl47" path="res://dev_gym.gd" id="1_3utfq"]
+[ext_resource type="PackedScene" uid="uid://cs1k22tdf04k4" path="res://player/player.tscn" id="1_wbwro"]
+[ext_resource type="Shader" uid="uid://dgvvcovama6dv" path="res://glitch.gdshader" id="2_3utfq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ef4d"]
+shader = ExtResource("2_3utfq")
+shader_parameter/shake_power = 0.03
+shader_parameter/color_bleed = 0.5
+shader_parameter/is_active = false
+
+[node name="DevGym" type="Node3D" unique_id=1568142570]
+script = ExtResource("1_3utfq")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=831071279]
+use_collision = true
+size = Vector3(50, 1, 50)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=411820886]
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=327364275 instance=ExtResource("1_wbwro")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5097656, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=321463347]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=783489919]
+material = SubResource("ShaderMaterial_0ef4d")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

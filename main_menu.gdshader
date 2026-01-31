@@ -1,4 +1,5 @@
 shader_type canvas_item;
+render_mode blend_add; // <--- THIS LINE REMOVES THE BLACK BACKGROUND!
 
 // Controls how much the pixels tear apart
 uniform float shake_power : hint_range(0.0, 1.0) = 0.0;

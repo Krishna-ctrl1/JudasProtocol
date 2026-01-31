@@ -1,14 +1,42 @@
 [gd_scene format=3 uid="uid://btqjvsm8snhl4"]
 
 [ext_resource type="Script" uid="uid://bkgvfh0gitx80" path="res://main_menu.gd" id="1_7vrkn"]
-[ext_resource type="Texture2D" uid="uid://jwpvn7x06x2b" path="res://1-removebg-preview.png" id="2_7vrkn"]
-[ext_resource type="Texture2D" uid="uid://bbwdmyc12u3yn" path="res://Gemini_Generated_Image_di5ohjdi5ohjdi5o.png" id="2_fu7sn"]
-[ext_resource type="Shader" uid="uid://iat8wc6lo06g" path="res://main_menu.gdshader" id="3_jix8l"]
+[ext_resource type="Texture2D" uid="uid://bi0nydd35es2x" path="res://Gemini_Generated_Image_y09w23y09w23y09w.png" id="2_jix8l"]
+[ext_resource type="Texture2D" uid="uid://8guioc18ejpl" path="res://Gemini_Generated_Image_aum35taum35taum3-removebg-preview.png" id="4_glbon"]
 
 [sub_resource type="Theme" id="Theme_fu7sn"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_glbon"]
-shader = ExtResource("3_jix8l")
+[sub_resource type="Shader" id="Shader_fu7sn"]
+code = "shader_type canvas_item;
+render_mode blend_add; // <--- THIS LINE REPLACES THE DROPDOWN MENU!
+
+// Controls how much the pixels tear apart
+uniform float shake_power : hint_range(0.0, 1.0) = 0.0;
+// Controls how much the Red/Blue colors split
+uniform float color_rate : hint_range(0.0, 1.0) = 0.0;
+
+float random(float seed) {
+	return fract(sin(seed) * 43758.5453123);
+}
+
+void fragment() {
+	// 1. Randomly slice rows of pixels
+	float enable_shift = float(random(floor(UV.y * 40.0) + TIME) < shake_power);
+	vec2 fixed_uv = UV;
+	fixed_uv.x += (random(floor(UV.y * 40.0) + TIME) - 0.5) * shake_power * enable_shift * 0.1;
+
+	// 2. Split RGB Channels (Chromatic Aberration)
+	float r = texture(TEXTURE, fixed_uv + vec2(color_rate * 0.02, 0.0)).r;
+	float g = texture(TEXTURE, fixed_uv).g;
+	float b = texture(TEXTURE, fixed_uv - vec2(color_rate * 0.02, 0.0)).b;
+	float a = texture(TEXTURE, fixed_uv).a;
+
+	// 3. Output the glitch
+	COLOR = vec4(r, g, b, a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jix8l"]
+shader = SubResource("Shader_fu7sn")
 shader_parameter/shake_power = 0.0
 shader_parameter/color_rate = 0.0
 
@@ -45,48 +73,48 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_fu7sn")
+texture = ExtResource("2_jix8l")
 
 [node name="TitleImage" type="TextureRect" parent="." unique_id=941784196]
-material = SubResource("ShaderMaterial_glbon")
+material = SubResource("ShaderMaterial_jix8l")
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -530.0
-offset_top = 82.0
-offset_right = 599.0
-offset_bottom = 637.0
+offset_left = -1765.0
+offset_top = -191.0
+offset_right = 1050.0
+offset_bottom = 985.0
 grow_horizontal = 2
-texture = ExtResource("2_7vrkn")
+texture = ExtResource("4_glbon")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="play" type="Button" parent="." unique_id=1853170216]
-custom_minimum_size = Vector2(1000, 100)
+custom_minimum_size = Vector2(500, 60)
 layout_mode = 0
-offset_left = 479.0
-offset_top = 661.0
-offset_right = 1479.0
-offset_bottom = 721.0
+offset_left = 247.0
+offset_top = 673.0
+offset_right = 851.0
+offset_bottom = 733.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_fu7sn")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_jix8l")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_glbon")
 text = "INITIATE PROTOCOL"
 
 [node name="quit" type="Button" parent="." unique_id=381106809]
-custom_minimum_size = Vector2(1000, 100)
+custom_minimum_size = Vector2(500, 60)
 layout_mode = 0
-offset_left = 481.0
-offset_top = 784.0
-offset_right = 1481.0
-offset_bottom = 884.0
+offset_left = 250.0
+offset_top = 749.0
+offset_right = 849.0
+offset_bottom = 809.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_nlkkf")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_qe12f")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_8qtwp")

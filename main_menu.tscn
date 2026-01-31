@@ -3,8 +3,14 @@
 [ext_resource type="Script" uid="uid://bkgvfh0gitx80" path="res://main_menu.gd" id="1_7vrkn"]
 [ext_resource type="Texture2D" uid="uid://jwpvn7x06x2b" path="res://1-removebg-preview.png" id="2_7vrkn"]
 [ext_resource type="Texture2D" uid="uid://bbwdmyc12u3yn" path="res://Gemini_Generated_Image_di5ohjdi5ohjdi5o.png" id="2_fu7sn"]
+[ext_resource type="Shader" uid="uid://iat8wc6lo06g" path="res://main_menu.gdshader" id="3_jix8l"]
 
 [sub_resource type="Theme" id="Theme_fu7sn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_glbon"]
+shader = ExtResource("3_jix8l")
+shader_parameter/shake_power = 0.0
+shader_parameter/color_rate = 0.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
 
@@ -42,6 +48,7 @@ grow_vertical = 2
 texture = ExtResource("2_fu7sn")
 
 [node name="TitleImage" type="TextureRect" parent="." unique_id=941784196]
+material = SubResource("ShaderMaterial_glbon")
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

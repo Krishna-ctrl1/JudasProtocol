@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://btqjvsm8snhl4"]
+
+[ext_resource type="Script" uid="uid://bkgvfh0gitx80" path="res://main_menu.gd" id="1_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://jwpvn7x06x2b" path="res://1-removebg-preview.png" id="2_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://bbwdmyc12u3yn" path="res://Gemini_Generated_Image_di5ohjdi5ohjdi5o.png" id="2_fu7sn"]
+
+[sub_resource type="Theme" id="Theme_fu7sn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7sn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jix8l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glbon"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlkkf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qe12f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8qtwp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dy7ct"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0o4t1"]
+
+[node name="MainMenu" type="Control" unique_id=1555765620]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_fu7sn")
+script = ExtResource("1_7vrkn")
+
+[node name="Background" type="TextureRect" parent="." unique_id=46142092]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fu7sn")
+
+[node name="TitleImage" type="TextureRect" parent="." unique_id=941784196]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -530.0
+offset_top = 82.0
+offset_right = 599.0
+offset_bottom = 637.0
+grow_horizontal = 2
+texture = ExtResource("2_7vrkn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="play" type="Button" parent="." unique_id=1853170216]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 0
+offset_left = 479.0
+offset_top = 661.0
+offset_right = 1479.0
+offset_bottom = 721.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_fu7sn")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_jix8l")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_glbon")
+text = "INITIATE PROTOCOL"
+
+[node name="quit" type="Button" parent="." unique_id=381106809]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 0
+offset_left = 481.0
+offset_top = 784.0
+offset_right = 1481.0
+offset_bottom = 884.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_nlkkf")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_qe12f")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_8qtwp")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_dy7ct")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_0o4t1")
+text = "ABORT
+"
